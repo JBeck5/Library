@@ -1,3 +1,11 @@
+var modal = document.getElementById("newBookModal");
+var btn = document.getElementById("addBookBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -8,7 +16,7 @@ function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    this.isread = isread;
 }
 
 function addBookToLibrary() {
