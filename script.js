@@ -2,19 +2,25 @@ var modal = document.getElementById("newBookModal");
 var btn = document.getElementById("addBookBtn");
 var span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
 
-span.onclick = function() {
+btn.addEventListener("click", function() {
     modal.style.display = "block";
-}
+})
+
+span.addEventListener("click", function() {
+    modal.style.display = "none";
+})
 
 window.onclick = function(event) {
     if(event.target == modal) {
         modal.style.display = "none";
     }
 }
+
+addBook = document.querySelector("newBookForm").addEventListener("submit", function() {
+    event.preventDefault();
+    addBookToLibrary();
+});
 
 const myLibrary = [];
 
@@ -32,4 +38,10 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
   // take params, create a book then store it in the array
   // create new div for each newly created book?
+  let title = document.getElementById("title");
+  let author = document.getElementById("author");
+  let pages = document.getElementById("pages");
+  let isRead = document.getElementById("isRead");
+  let newBook = new Book(title, author, pages, isRead);
+  console.log(newBook);
 }
