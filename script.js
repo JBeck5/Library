@@ -1,6 +1,8 @@
 var modal = document.getElementById("newBookModal");
 var btn = document.getElementById("addBookBtn");
 var span = document.getElementsByClassName("close")[0];
+var addBookForm = document.getElementById("newBookForm");
+
 
 
 btn.addEventListener("click", function() {
@@ -17,14 +19,15 @@ window.onclick = function(event) {
     }
 }
 
-addBook = document.querySelector("newBookForm").addEventListener("submit", function() {
+document.getElementById("newBookForm").addEventListener("submit", (event) => {
     event.preventDefault();
     addBookToLibrary();
-});
+    modal.style.display = "none";
+})
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, isRead) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor");
     }
@@ -32,7 +35,7 @@ function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.isread = isread;
+    this.isRead = isRead;
 }
 
 function addBookToLibrary() {
